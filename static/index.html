@@ -1,26 +1,21 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<title></title>
-	  <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-	</head>
-	<body>
-		 静态页面fwefwef
-		 
-		 <script>
-		 	$(document).ready(function(){
-		 		$.ajax({
-		 			type:"get",
-		 			url:"/user",
-		 			success:function(abc)
-		 			{
-		 				alert(abc);
-		 			}
-		 			 
-		 		});
-		 	})
-		 	
-		 </script>
-	</body>
-</html>
+<div class="page-group">
+	<div class="page page-current">
+		<!-- 你的html代码 -->
+		静态页面fwefwef
+	</div>
+</div>
+
+<script>
+$(function() 
+{
+	console.log('运行ok');
+
+	$.ajax({
+		type: "get",
+		url: "/user",
+		success: function(abc) {
+			alert(abc);
+		}
+	});
+});
+</script>
