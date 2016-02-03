@@ -18,8 +18,11 @@
 
 第一次任务：
 1、建模
-	设计好基本的用户表
-	写好基本的用户登录和注册存储过程
+	设计好基本的用户表：
+		doc/sql/table_create_user.sql
+	写好基本的用户登录和注册存储过程：
+		doc/sql/sp_user_login.sql
+		doc/sql/sp_user_reg.sql
 2、简单准备好自己的后端开发语言
 	暂时本视频使用PHP (>=5.4版本）
 	使用php -S localhost:9090 [-t 指定目录][指定入口文件]来启动服务。

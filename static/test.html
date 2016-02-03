@@ -1,0 +1,21 @@
+<div class="page-group">
+	<div class="page page-current">
+		<!-- 你的html代码 -->
+		静态页面fwefwef
+	</div>
+</div>
+
+<script>
+$(function() 
+{
+	console.log('运行ok');
+
+	$.ajax({
+		type: "get",
+		url: "/user",
+		success: function(abc) {
+			alert(abc);
+		}
+	});
+});
+</script>
