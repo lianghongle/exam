@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * 服务接口
+ */
+class AuthService extends BaseService
+{
+	function run() 
+	{
+		switch(method())
+		{
+			case 'get'://登陆
+				$this->login();
+				break;
+			case 'post'://修改
+				$this->update();
+				break;
+			case 'put'://注册
+				$this->reg();
+				break;
+			case 'delete'://退出登陆
+				$this->logout();
+				break;
+			default:// todo 不支持操作异常处理
+				$this->response(-1, [], '请求异常');
+		}		
+	}
+
+	function reg() 
+	{
+
+	}
+
+	function update() 
+	{
+
+	}
+	
+	function logout() 
+	{
+
+	}
+	
+	function login()
+	{
+		$params = req_params();
+		if($params['login_mobile'] == 'lhl' && $params['login_pwd'] == '123'){
+			$this->response(1, [], '登陆成功');
+		}else{
+			$this->response(2, [], '登陆失败');
+		}	
+	}
+}

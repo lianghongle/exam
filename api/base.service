@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * 服务接口基类
+ */
+class BaseService
+{
+	function __construct()
+	{
+		// todo 检测用户是否登陆
+		
+		// todo 检测用户是否有访问权限
+	}
+	
+	/**
+	 * 请求返回函数 json格式
+	 * @param int $code 
+	 * 			状态码：0-只代码访问正常，其他状态自定义
+	 * @param array $data
+	 * @param string $msg
+	 */
+	function response($code = 0, $data = [], $msg = '') 
+	{
+		$result = [
+			'code' => $code,
+			'msg' => $msg,
+			'data' => is_array($data) ? $data : [$data]
+		];
+
+		header ( 'Content-Type: application/json' );
+		// header('HTTP/1.1: 200');
+		// header('Content-Length: ' . strlen($output));
+		exit ( json_encode ( $result ) );
+	}
+}

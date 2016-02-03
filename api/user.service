@@ -3,34 +3,32 @@
 /**
  * 用户服务接口
  */
-class UserService 
+class UserService extends BaseService
 {
 	function run() 
 	{
-		echo method();
-		
 		switch(method())
 		{
 			case 'get'://获取单个用户信息/分页获取用户信息
-				$this->search();
+				$result = $this->search();
 				break;
 			case 'post'://修改用户信息
-				$this->update();
+				$result = $this->update();
 				break;
 			case 'put'://添加用户信息
-				$this->add();
+				$result = $this->add();
 				break;
 			case 'delete'://删除用户
-				$this->delete();
+				$result = $this->delete();
 				break;
 			default:// todo 不支持操作异常处理
-				echo "error";
-		}
+				$this->response(-1, [], '请求异常');
+		}		
 	}
 
 	function add() 
 	{
-
+		
 	}
 
 	function update() 
@@ -45,6 +43,6 @@ class UserService
 	
 	function search() 
 	{
-		echo __METHOD__;
+		$this->response(0, [], '');
 	}
 }

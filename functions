@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * 请求方法类型
+ */
 function method($m = "") 
 {
 	if ($m == "") {
@@ -7,4 +10,49 @@ function method($m = "")
 	} else {
 		return strtolower($_SERVER["REQUEST_METHOD"]) == $m;
 	}
+}
+
+/**
+ * 请求参数处理
+ */
+function req_params($param_name = null, $default = '')
+{
+	
+	
+	parse_str(file_get_contents('php://input'), $params);
+	
+	var_dump($params, $_GET);die;
+	
+	foreach($params as $key=>$val){
+		$params[$key] = trim($val);
+		$params[$key] = strip_tags($val);
+		$params[$key] = mysql_escape_mimic($val);
+	}
+	
+	if($param_name === null && $default === ''){
+		return	$params;
+	}else if($param_name !== null && $default === ''){
+		return isset($params[$param_name]) ? $params[$param_name] : '';
+	}else{
+		return isset($params[$param_name]) ? $params[$param_name] : $default;
+	}
+}
+
+/**
+ * sql查询参数转义
+ *
+ * @param $inp
+ * @return array|mixed
+ */
+function mysql_escape_mimic($inp)
+{
+	if(is_array($inp))
+		return array_map(__METHOD__, $inp);
+
+	if(!empty($inp) && is_string($inp)) {
+		return str_replace(['\\', "\0", "\n", "\r", "'", '"', "\x1a"],
+			['\\\\', '\\0', '\\n', '\\r', "\\'", '\\"', '\\Z'], $inp);
+	}
+
+	return $inp;
 }

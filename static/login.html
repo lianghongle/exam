@@ -83,7 +83,7 @@
                             <div class="item-inner">
                                 <div class="item-title label">账号</div>
                                 <div class="item-input">
-                                    <input type="text" placeholder="手机号">
+                                    <input type="text" placeholder="手机号" id="login_mobile">
                                 </div>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                             <div class="item-inner">
                                 <div class="item-title label">密码</div>
                                 <div class="item-input">
-                                    <input type="password" placeholder="密码" class="">
+                                    <input type="password" placeholder="密码" class="" id="login_pwd">
                                 </div>
                             </div>
                         </div>
@@ -103,8 +103,8 @@
             </div>
             <div class="content-block">
                 <div class="row">
-                    <div class="col-50"><a href="#" class="button button-big button-fill button-success">提交注册</a></div>
-                    <div class="col-50"><a href="#" class="button button-big button-fill">返回登陆</a></div>
+                    <div class="col-50"><a href="#" class="button button-big button-fill button-success" id="login">登陆</a></div>
+                    <div class="col-50"><a href="#" class="button button-big button-fill">去注册</a></div>
                 </div>
             </div>
         </div>
@@ -125,3 +125,20 @@
         </div>
     </div>
 </div>
+
+<script>
+	$("#login").on('click', function(){
+		$.ajax({
+			type: "GET",
+			url: "/auth",
+			dataType: "json", 
+			data: {
+                login_mobile: $("#login_mobile").val(),
+                login_pwd: $("#login_pwd").val(),
+            },
+			success: function(data) {
+				console.log(data);
+			}
+		});
+	});
+</script>
