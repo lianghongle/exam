@@ -16,12 +16,12 @@ function method($m = "")
  * 请求参数处理
  */
 function req_params($param_name = null, $default = '')
-{
-	
-	
+{	
 	parse_str(file_get_contents('php://input'), $params);
 	
-	var_dump($params, $_GET);die;
+	$params = array_merge($_GET, $_POST, $params);
+	
+//	var_dump($_GET,$_POST,$params);die;
 	
 	foreach($params as $key=>$val){
 		$params[$key] = trim($val);

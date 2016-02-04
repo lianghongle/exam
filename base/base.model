@@ -1,0 +1,67 @@
+<?php
+
+require BASE_PATH.'lib'.DS.'notorm/NotORM.php';
+
+/**
+ * 数据库操作基类
+ * 
+ * $db = BaseModel::getDB();
+		
+		$conn = BaseModel::getConnection();
+		$result = $conn->query('select * from jt_user');
+		var_dump($result);
+		foreach($result as $key=>$val){
+			var_dump($key, $val);
+		}
+		die;
+ */
+class BaseModel
+{
+	public static $db = null;
+	public static $connection = null;
+	
+	/**
+	 * 获取notrom 对象
+	 */
+//	public static function getDB($conf = [])
+	public static function getDB()
+	{
+//		if(empty($conf)){
+//			reutrn empty(static::$db['default']) ? null : static::$db['default'];
+//		}
+		
+		if(static::$db == null){
+			
+			$pdo = new PDO('mysql:host=192.168.10.1;dbname=jt_exam', 'root', 'admin');
+        	$pdo->exec('set names utf8');
+			static::$connection = $pdo;
+			
+			$structure = new NotORM_Structure_Convention(
+				$primary = 'id',
+				$foreign = '%sid',
+				$table = '%s',
+				$prefix = 'jt_'
+			);
+			
+			static::$db = new NotORM($pdo, $structure);
+		}
+		
+		return static::$db;
+	}
+	
+	/**
+	 * 获取数据库连接，用于直接执行sql
+	 * 
+	 * $conn = BaseModel::getConnection();
+	 * $conn->query('select * from jt_user');
+	 * $conn->exce('update ...');
+	 */
+	public static function getConnection()
+	{
+		if(static::$connection == null){
+			static::getDB();
+		}
+		
+		return static::$connection;
+	}
+}

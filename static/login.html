@@ -1,7 +1,7 @@
 <div class="page-group">
 
     <!-- page 容器 -->
-    <div class="page page-current">
+    <div class="page page-current" id="jt-page-login">
 
         <!-- 标题栏 -->
         <header class="bar bar-nav">
@@ -10,61 +10,6 @@
                 <!--返回-->
             <!--</a>-->
             <h1 class="title">登陆</h1>
-        </header>
-
-        <!-- 工具栏 -->
-        <nav class="bar bar-tab">
-
-        </nav>
-
-        <!-- 这里是页面内容区 -->
-        <div class="content">
-            <div class="list-block">
-                <ul>
-                    <!-- Text inputs -->
-                    <li>
-                        <div class="item-content">
-                            <div class="item-media"><i class="icon icon-form-name"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title label">账号</div>
-                                <div class="item-input">
-                                    <input type="text" placeholder="手机号">
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content">
-                            <div class="item-media"><i class="icon icon-form-password"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title label">密码</div>
-                                <div class="item-input">
-                                    <input type="password" placeholder="密码" class="">
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="content-block">
-                <div class="row">
-                    <div class="col-50"><a href="#" class="button button-big button-fill button-success">登陆</a></div>
-                    <div class="col-50"><a href="#" class="button button-big button-fill">注册</a></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- page 容器 -->
-    <div class="page page-current">
-
-        <!-- 标题栏 -->
-        <header class="bar bar-nav">
-            <!--<a class="button button-link button-nav pull-left" href="/demos/card" data-transition='slide-out'>-->
-            <!--<span class="icon icon-left"></span>-->
-            <!--返回-->
-            <!--</a>-->
-            <h1 class="title">注册</h1>
         </header>
 
         <!-- 工具栏 -->
@@ -103,8 +48,63 @@
             </div>
             <div class="content-block">
                 <div class="row">
-                    <div class="col-50"><a href="#" class="button button-big button-fill button-success" id="login">登陆</a></div>
-                    <div class="col-50"><a href="#" class="button button-big button-fill">去注册</a></div>
+                    <div class="col-50"><a href="" class="button button-big button-fill button-success" id="jt-action-login">登陆</a></div>
+                    <div class="col-50"><a href="#jt-page-register" class="button button-big button-fill">去注册</a></div>   
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<!-- page 容器 -->
+    <div class="page" id="jt-page-register">
+
+        <!-- 标题栏 -->
+        <header class="bar bar-nav">
+            <!--<a class="button button-link button-nav pull-left" href="/demos/card" data-transition='slide-out'>-->
+            <!--<span class="icon icon-left"></span>-->
+            <!--返回-->
+            <!--</a>-->
+            <h1 class="title">注册</h1>
+        </header>
+
+        <!-- 工具栏 -->
+        <nav class="bar bar-tab">
+
+        </nav>
+
+        <!-- 这里是页面内容区 -->
+        <div class="content">
+            <div class="list-block">
+                <ul>
+                    <!-- Text inputs -->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-name"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">账号</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="手机号">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-password"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">密码</div>
+                                <div class="item-input">
+                                    <input type="password" placeholder="密码" class="">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-50"><a href="#" class="button button-big button-fill button-success">提交注册</a></div>
+                    <div class="col-50"><a href="#jt-page-login" class="button button-big button-fill">返回登陆</a></div>
                 </div>
             </div>
         </div>
@@ -127,7 +127,17 @@
 </div>
 
 <script>
-	$("#login").on('click', function(){
+	$("#jt-action-login").on('click', function(){
+		
+		var login_mobile = $.trim($("#login_mobile").val());
+		var login_pwd = $.trim($("#login_pwd").val());
+		
+		if(login_mobile.length == 0 || login_pwd.length == 0){
+//			$.alert('用户名或者密码为空');
+			alert('用户名或者密码为空');
+			return false;
+		}
+
 		$.ajax({
 			type: "GET",
 			url: "/auth",
@@ -138,6 +148,21 @@
             },
 			success: function(data) {
 				console.log(data);
+				if(data.code == 1){//登陆成功
+					window.localStorage.setItem('key', 'value');
+//					window.localStorage.getItem('key');
+					
+//					$.toast("登陆成功");
+					
+					//跳转登陆后的首页
+					$.router.load("/home.html");  //加载ajax页面
+//					$.router.load("#about");  //加载内联页面
+					// ignoreCache 是加载一个新页面时是否忽略缓存而发网络请求，默认是 false，表示使用缓存，可以设为 true 来忽略缓存
+					//$.router.load('/detail', true);
+				}else{
+//					$.alert(data.msg);
+					alert(data.msg);
+				}			
 			}
 		});
 	});
