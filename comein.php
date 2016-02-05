@@ -43,21 +43,16 @@ if($service == ''){
 	$service = 'login.html';
 }
 
-if (file_exists(STATIC_PATH . $service)) {//进入静态资源
-	
-	$pathinfo = pathinfo(STATIC_PATH . $service);
-	
-	if($pathinfo['extension'] == TEMPLATE_EXT){//模板文件
-		//加载header.html
-		include (STATIC_COMMON_PATH . 'header.html');
-	
-		include (STATIC_PATH . $service);
-	
-		//加载footer.html
-		include (STATIC_COMMON_PATH . 'footer.html');
-	}else{//其他js、css、图片等资源文件
-		include (STATIC_PATH . $service);
-	}
+//include (STATIC_PATH . 'test.html');die;
+
+if (file_exists(STATIC_PATH . $service)) {//进入静态资源	
+	include (STATIC_PATH . $service);
+//	$pathinfo = pathinfo(STATIC_PATH . $service);
+//	if($pathinfo['extension'] == TEMPLATE_EXT){//模板文件
+//		include (STATIC_PATH . $service);
+//	}else{//其他js、css、图片等资源文件
+//		include (STATIC_PATH . $service);
+//	}
 } else if(file_exists(API_PATH . $service . ".service")) {// 加载 controller
 
 		//加载公用function，其他父类
@@ -71,12 +66,6 @@ if (file_exists(STATIC_PATH . $service)) {//进入静态资源
 //		$loadClass = new $class_name();
 //		$loadClass -> run();
 		(new $class_name())->run();
-} else {
-	//加载header.html
-	include (STATIC_COMMON_PATH . 'header.html');
-	
-	include (STATIC_PATH . '404.html');
-	
-	//加载footer.html
-	include (STATIC_COMMON_PATH . 'footer.html');
+} else {	
+	include (STATIC_PATH . '404.html');	
 }

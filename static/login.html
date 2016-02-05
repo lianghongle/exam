@@ -1,169 +1,190 @@
-<div class="page-group">
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!--<title></title>-->
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<link rel="shortcut icon" href="/favicon.ico">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">	
+				
+		<script type='text/javascript' src='/js/init.js' charset='utf-8'></script>
+	</head>
 
-    <!-- page 容器 -->
-    <div class="page page-current" id="jt-page-login">
-
-        <!-- 标题栏 -->
-        <header class="bar bar-nav">
-            <!--<a class="button button-link button-nav pull-left" href="/demos/card" data-transition='slide-out'>-->
-                <!--<span class="icon icon-left"></span>-->
-                <!--返回-->
-            <!--</a>-->
-            <h1 class="title">登陆</h1>
-        </header>
-
-        <!-- 工具栏 -->
-        <nav class="bar bar-tab">
-
-        </nav>
-
-        <!-- 这里是页面内容区 -->
-        <div class="content">
-            <div class="list-block">
-                <ul>
-                    <!-- Text inputs -->
-                    <li>
-                        <div class="item-content">
-                            <div class="item-media"><i class="icon icon-form-name"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title label">账号</div>
-                                <div class="item-input">
-                                    <input type="text" placeholder="手机号" id="login_mobile">
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content">
-                            <div class="item-media"><i class="icon icon-form-password"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title label">密码</div>
-                                <div class="item-input">
-                                    <input type="password" placeholder="密码" class="" id="login_pwd">
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="content-block">
-                <div class="row">
-                    <div class="col-50"><a href="" class="button button-big button-fill button-success" id="jt-action-login">登陆</a></div>
-                    <div class="col-50"><a href="#jt-page-register" class="button button-big button-fill">去注册</a></div>   
-                </div>
-            </div>
-        </div>
-    </div>
-
-	<!-- page 容器 -->
-    <div class="page" id="jt-page-register">
-
-        <!-- 标题栏 -->
-        <header class="bar bar-nav">
-            <!--<a class="button button-link button-nav pull-left" href="/demos/card" data-transition='slide-out'>-->
-            <!--<span class="icon icon-left"></span>-->
-            <!--返回-->
-            <!--</a>-->
-            <h1 class="title">注册</h1>
-        </header>
-
-        <!-- 工具栏 -->
-        <nav class="bar bar-tab">
-
-        </nav>
-
-        <!-- 这里是页面内容区 -->
-        <div class="content">
-            <div class="list-block">
-                <ul>
-                    <!-- Text inputs -->
-                    <li>
-                        <div class="item-content">
-                            <div class="item-media"><i class="icon icon-form-name"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title label">账号</div>
-                                <div class="item-input">
-                                    <input type="text" placeholder="手机号">
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content">
-                            <div class="item-media"><i class="icon icon-form-password"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title label">密码</div>
-                                <div class="item-input">
-                                    <input type="password" placeholder="密码" class="">
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="content-block">
-                <div class="row">
-                    <div class="col-50"><a href="#" class="button button-big button-fill button-success">提交注册</a></div>
-                    <div class="col-50"><a href="#jt-page-login" class="button button-big button-fill">返回登陆</a></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- popup, panel 等放在这里 -->
-    <div class="panel-overlay">
-
-    </div>
-
-    <!-- Left Panel with Reveal effect -->
-    <div class="panel panel-left panel-reveal">
-        <div class="content-block">
-            <p>这是一个侧栏</p>
-            <p></p>
-            <!-- Click on link with "close-panel" class will close panel -->
-            <p><a href="#" class="close-panel">关闭</a></p>
-        </div>
-    </div>
-</div>
-
-<script>
-	$("#jt-action-login").on('click', function(){
+	<body>
+	
+		<div class="page-group">
 		
-		var login_mobile = $.trim($("#login_mobile").val());
-		var login_pwd = $.trim($("#login_pwd").val());
+		    <!-- page 容器 -->
+		    <div class="page page-current" id="jt-page-login">
 		
-		if(login_mobile.length == 0 || login_pwd.length == 0){
-//			$.alert('用户名或者密码为空');
-			alert('用户名或者密码为空');
-			return false;
-		}
+		        <!-- 标题栏 -->
+		        <header class="bar bar-nav">
+		            <!--<a class="button button-link button-nav pull-left" href="/demos/card" data-transition='slide-out'>-->
+		                <!--<span class="icon icon-left"></span>-->
+		                <!--返回-->
+		            <!--</a>-->
+		            <h1 class="title">登陆</h1>
+		        </header>
+		
+		        <!-- 工具栏 -->
+		        <nav class="bar bar-tab">
+		
+		        </nav>
+		
+		        <!-- 这里是页面内容区 -->
+		        <div class="content">		        	
+		            <div class="list-block">
+		                <ul>
+		                    <!-- Text inputs -->
+		                    <li>
+		                        <div class="item-content">
+		                            <div class="item-media"><i class="icon icon-form-name"></i></div>
+		                            <div class="item-inner">
+		                                <div class="item-title label">账号</div>
+		                                <div class="item-input">
+		                                    <input type="text" placeholder="手机号" id="login_mobile">
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </li>
+		                    <li>
+		                        <div class="item-content">
+		                            <div class="item-media"><i class="icon icon-form-password"></i></div>
+		                            <div class="item-inner">
+		                                <div class="item-title label">密码</div>
+		                                <div class="item-input">
+		                                    <input type="password" placeholder="密码" class="" id="login_pwd">
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </li>
+		                </ul>
+		            </div>
+		            <div class="content-block">
+		                <div class="row">
+		                    <div class="col-50"><a href="" class="button button-big button-fill button-success" id="jt-action-login">登陆</a></div>
+		                    <div class="col-50"><a href="#jt-page-register" class="button button-big button-fill">去注册</a></div>   
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		
+			<!-- page 容器 -->
+		    <div class="page" id="jt-page-register">
+		
+		        <!-- 标题栏 -->
+		        <header class="bar bar-nav">
+		            <!--<a class="button button-link button-nav pull-left" href="/demos/card" data-transition='slide-out'>-->
+		            <!--<span class="icon icon-left"></span>-->
+		            <!--返回-->
+		            <!--</a>-->
+		            <h1 class="title">注册</h1>
+		        </header>
+		
+		        <!-- 工具栏 -->
+		        <nav class="bar bar-tab">
+		
+		        </nav>
+		
+		        <!-- 这里是页面内容区 -->
+		        <div class="content">
+		            <div class="list-block">
+		                <ul>
+		                    <!-- Text inputs -->
+		                    <li>
+		                        <div class="item-content">
+		                            <div class="item-media"><i class="icon icon-form-name"></i></div>
+		                            <div class="item-inner">
+		                                <div class="item-title label">账号</div>
+		                                <div class="item-input">
+		                                    <input type="text" placeholder="手机号">
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </li>
+		                    <li>
+		                        <div class="item-content">
+		                            <div class="item-media"><i class="icon icon-form-password"></i></div>
+		                            <div class="item-inner">
+		                                <div class="item-title label">密码</div>
+		                                <div class="item-input">
+		                                    <input type="password" placeholder="密码" class="">
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </li>
+		                </ul>
+		            </div>
+		            <div class="content-block">
+		                <div class="row">
+		                    <div class="col-50"><a href="#" class="button button-big button-fill button-success">提交注册</a></div>
+		                    <div class="col-50"><a href="#jt-page-login" class="button button-big button-fill">返回登陆</a></div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		
+		    <!-- popup, panel 等放在这里 -->
+		    <div class="panel-overlay">
+		
+		    </div>
+		
+		    <!-- Left Panel with Reveal effect -->
+		    <div class="panel panel-left panel-reveal">
+		        <div class="content-block">
+		            <p>这是一个侧栏</p>
+		            <p></p>
+		            <!-- Click on link with "close-panel" class will close panel -->
+		            <p><a href="#" class="close-panel">关闭</a></p>
+		        </div>
+		    </div>
+		</div>
+		
+		<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    	<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+    	<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+		<script>
+			$("#jt-action-login").on('click', function(){
+				
+				var login_mobile = $.trim($("#login_mobile").val());
+				var login_pwd = $.trim($("#login_pwd").val());
+				
+				if(login_mobile.length == 0 || login_pwd.length == 0){
+					$.alert('用户名或者密码为空');
+					return false;
+				}
+		
+				$.ajax({
+					type: "GET",
+					url: "/auth",
+					dataType: "json", 
+					data: {
+		                login_mobile: $("#login_mobile").val(),
+		                login_pwd: $("#login_pwd").val(),
+		            },
+					success: function(data) {
+//						console.log(data);
+						if(data.code == 1){//登陆成功
+							window.localStorage.setItem('key', 'value');
+		//					window.localStorage.getItem('key');
+							
+		//					$.toast("登陆成功");
+							
+							//跳转登陆后的首页
+							$.router.load("/home.html");  //加载ajax页面
+		//					$.router.load("#about");  //加载内联页面
+							// ignoreCache 是加载一个新页面时是否忽略缓存而发网络请求，默认是 false，表示使用缓存，可以设为 true 来忽略缓存
+							//$.router.load('/detail', true);
+						}else{
+							$.alert(data.msg);
+						}			
+					}
+				});
+			});
+		</script>
 
-		$.ajax({
-			type: "GET",
-			url: "/auth",
-			dataType: "json", 
-			data: {
-                login_mobile: $("#login_mobile").val(),
-                login_pwd: $("#login_pwd").val(),
-            },
-			success: function(data) {
-				console.log(data);
-				if(data.code == 1){//登陆成功
-					window.localStorage.setItem('key', 'value');
-//					window.localStorage.getItem('key');
-					
-//					$.toast("登陆成功");
-					
-					//跳转登陆后的首页
-					$.router.load("/home.html");  //加载ajax页面
-//					$.router.load("#about");  //加载内联页面
-					// ignoreCache 是加载一个新页面时是否忽略缓存而发网络请求，默认是 false，表示使用缓存，可以设为 true 来忽略缓存
-					//$.router.load('/detail', true);
-				}else{
-//					$.alert(data.msg);
-					alert(data.msg);
-				}			
-			}
-		});
-	});
-</script>
+	</body>
+</html>
