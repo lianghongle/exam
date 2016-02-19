@@ -158,15 +158,20 @@
 				}
 		
 				$.ajax({
-					type: "GET",
-					url: "/auth",
-					dataType: "json", 
+					type: "POST",
+					url: "http://192.168.10.128:9090/auth",
+//					dataType: "json",
+					
+					crossDomain: true,
+					dataType:"jsonp",
+					jsonp:"jsoncallback",
+					
 					data: {
 		                login_mobile: $("#login_mobile").val(),
 		                login_pwd: $("#login_pwd").val(),
 		            },
 					success: function(data) {
-//						console.log(data);
+						console.log(data);
 						if(data.code == 1){//登陆成功
 							window.localStorage.setItem('key', 'value');
 		//					window.localStorage.getItem('key');

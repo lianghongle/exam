@@ -7,6 +7,8 @@ class AuthService extends BaseService
 {
 	function run() 
 	{
+		$this->response(2, [], method());
+		
 		switch(method())
 		{
 			case 'get'://登陆
@@ -33,7 +35,7 @@ class AuthService extends BaseService
 
 	function update() 
 	{
-
+		$this->response(1, [], 'test ok');
 	}
 	
 	function logout() 
@@ -44,10 +46,14 @@ class AuthService extends BaseService
 	function login()
 	{	
 		$params = req_params();
+		if(!isset($params['login_mobile']) || !isset($params['login_pwd'])){
+			$this->response(2, [], '请输入用户名和密码');
+		}
+		
 		if($params['login_mobile'] == 'lhl' && $params['login_pwd'] == '123'){
 			$this->response(1, [], '登陆成功');
 		}else{
 			$this->response(2, [], '登陆失败');
 		}	
-	}
+	}	
 }

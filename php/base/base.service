@@ -7,6 +7,8 @@ class BaseService
 {
 	function __construct()
 	{
+		
+		
 		// todo 检测用户是否登陆
 		
 		// todo 检测用户是否有访问权限
@@ -21,6 +23,9 @@ class BaseService
 	 */
 	function response($code = 0, $data = [], $msg = '') 
 	{
+		$params = req_params();//var_dump($params);die;
+		$jsoncallback = $params['jsoncallback'];
+		
 		$result = [
 			'code' => $code,
 			'msg' => $msg,
@@ -30,6 +35,11 @@ class BaseService
 		header ( 'Content-Type: application/json' );
 		// header('HTTP/1.1: 200');
 		// header('Content-Length: ' . strlen($output));
-		exit ( json_encode ( $result ) );
+		if($jsoncallback){
+			echo $jsoncallback.'('.json_encode ( $result ).')';
+			exit();
+		}else{
+			exit (json_encode ( $result ));
+		}
 	}
 }
